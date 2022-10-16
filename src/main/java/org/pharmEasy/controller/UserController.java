@@ -22,7 +22,7 @@ public class UserController {
         return userDao.findAll();
     }
 
-    @PostMapping
+    @PostMapping(UserMappings.REGISTER)
     public User addNewUser(@RequestBody User user) {
         return userDao.save(user);
     }

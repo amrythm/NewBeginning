@@ -1,11 +1,11 @@
 package org.pharmEasy.controller;
 
 
-import org.pharmEasy.constants.LoginMappings;
 import org.pharmEasy.authentication.dto.JwtResponse;
 import org.pharmEasy.authentication.dto.LoginRequest;
-import org.pharmEasy.service.MyUserDetailService;
 import org.pharmEasy.authentication.util.JwtTokenUtil;
+import org.pharmEasy.constants.LoginMappings;
+import org.pharmEasy.service.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,11 +13,13 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(LoginMappings.LOGIN)
-@CrossOrigin
+@RequestMapping
 public class LoginController {
 
         @Autowired
@@ -29,7 +31,7 @@ public class LoginController {
         @Autowired
         private MyUserDetailService userDetailsService;
 
-        @PostMapping
+        @PostMapping(LoginMappings.LOGIN)
         public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception {
 
                 authenticate(loginRequest.getUsername(), loginRequest.getPassword());
