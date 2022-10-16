@@ -22,11 +22,12 @@ public class User {
     private int id;
     @NonNull    // search for difference b/w lombok and spring version of NonNull
     private String name;
+
     @NotBlank(message = "This field cannot be empty")
     @Email
     private String email;
+
     @NonNull
-    
     private String password;
 
     private char gender;
